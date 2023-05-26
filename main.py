@@ -47,7 +47,7 @@ Path("data.js").write_text("data=" + originstring)
 
 # Send email if remaining electricity is below 5
 if remain < 50:
-    sender_email = "your_email@example.com"
+    sender_email = "electricity@zyqswebsite.tk"
     receiver_email = ["chinazyq123@139.com", "18210382197@129.com"]
     subject = "低电量提醒"
     message = f"剩余电量不足5度，请及时充电: {remain} kWh."
@@ -59,10 +59,10 @@ if remain < 50:
     email["To"] = receiver_email
 
     # Send the email
-    smtp_server = "smtp.example.com"
-    smtp_port = 587
-    smtp_username = "your_username"
-    smtp_password = "your_password"
+    smtp_server = "smtp.ym.163.com"
+    smtp_port = 25
+    smtp_username = "electricity@zyqswebsite.tk"
+    smtp_password = "electricity"
 
     with smtplib.SMTP(smtp_server, smtp_port) as server:
         server.starttls()
