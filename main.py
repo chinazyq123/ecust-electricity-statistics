@@ -48,8 +48,8 @@ Path("data.js").write_text("data=" + originstring)
 # Send email if remaining electricity is below 5
 if remain < 50:
     sender_email = "electricity@zyqswebsite.tk"
-    receiver_emails = ["chinazyq123@139.com", "18210382197@129.com", "2776820836@qq.com", "17651983370@wo.cn"]
-    subject = "低电量提醒"
+    receiver_emails = ["chinazyq123@139.com", "18210382197@129.com", "2776820836@qq.com", "1305955806@qq.com"]
+    subject = "低电量提醒：剩余电量：{remain} kWh."
     message = f"剩余电量不足5度，请及时充电。剩余电量：{remain} kWh."
 
     # Create a plain text email message
