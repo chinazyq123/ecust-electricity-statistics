@@ -45,7 +45,7 @@ else:
 originstring = json.dumps(data, indent=4, ensure_ascii=False)
 Path("data.js").write_text("data=" + originstring)
 
-# Send email if remaining electricity is below 5
+# Send email if remaining electricity is below 30
 if remain < 30:
     sender_email = os.environ.get('MAIL').strip()
     receiver_emails = ["bestzyq@foxmail.com", "1162358837@qq.com", "2776820836@qq.com", "1305955806@qq.com"]
@@ -58,13 +58,12 @@ if remain < 30:
     email["From"] = sender_email
     email["To"] = ", ".join(receiver_emails)
 
-    # Send the email
+    # Send the email using SSL
     smtp_server = "smtp.exmail.qq.com"
-    smtp_port = 25
+    smtp_port = 465  # 使用 SSL 连接的常见端口号
     smtp_username = os.environ.get('MAIL').strip()
     smtp_password = os.environ.get('PWD').strip()
 
-    with smtplib.SMTP(smtp_server, smtp_port) as server:
-        server.starttls()
+    with smtplib.SMTP_SSL(smtp_server, smtp_port) as server:
         server.login(smtp_username, smtp_password)
         server.send_message(email)
