@@ -57,11 +57,15 @@ if remain < 30:
     email["Subject"] = subject
     email["From"] = sender_email
     email["To"] = ", ".join(receiver_emails)
-
+    
+    # Print MAIL and PWD values for debugging
+    print(f"DEBUG: MAIL={sender_email}")
+    print(f"DEBUG: PWD={os.environ.get('PWD')}")
+    
     # Send the email using SSL
     smtp_server = "smtp.exmail.qq.com"
     smtp_port = 465  # 使用 SSL 连接的常见端口号
-    smtp_username = os.environ.get('MAIL').strip()
+    smtp_username = sender_email
     smtp_password = os.environ.get('PWD').strip()
 
     with smtplib.SMTP_SSL(smtp_server, smtp_port) as server:
