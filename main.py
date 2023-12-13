@@ -45,9 +45,9 @@ else:
 originstring = json.dumps(data, indent=4, ensure_ascii=False)
 Path("data.js").write_text("data=" + originstring)
 
-# Send email if remaining electricity is below 30
-if remain < 30:
-    sender_email = os.environ.get('MAIL').strip()
+# Send email if remaining electricity is below 5
+if remain < 20:
+    sender_email = "electricity@zyqswebsite.tk"
     receiver_emails = ["bestzyq@foxmail.com", "1162358837@qq.com", "2776820836@qq.com", "1305955806@qq.com"]
     subject = "低电量提醒"
     message = f"剩余电量不足20度，请及时充电。剩余电量：{remain} kWh."
@@ -57,21 +57,14 @@ if remain < 30:
     email["Subject"] = subject
     email["From"] = sender_email
     email["To"] = ", ".join(receiver_emails)
-    
-    # 明确打印 MAIL 和 PWD 的值
-    print(f"DEBUG: MAIL={os.environ.get('MAIL')}")
-    print(f"DEBUG: PWD={os.environ.get('PWD')}")
-    
-    # 输出明文值到日志
-    print("MAIL=" + os.environ.get('MAIL'))
-    print("PWD=" + os.environ.get('PWD'))
 
-    # Send the email using SSL
-    smtp_server = "smtp.exmail.qq.com"
-    smtp_port = 465  # 使用 SSL 连接的常见端口号
-    smtp_username = sender_email
-    smtp_password = os.environ.get('PWD').strip()
+    # Send the email
+    smtp_server = "smtp.ym.163.com"
+    smtp_port = 25
+    smtp_username = "electricity@zyqswebsite.tk"
+    smtp_password = "electricity"
 
-    with smtplib.SMTP_SSL(smtp_server, smtp_port) as server:
+    with smtplib.SMTP(smtp_server, smtp_port) as server:
+        server.starttls()
         server.login(smtp_username, smtp_password)
         server.send_message(email)
