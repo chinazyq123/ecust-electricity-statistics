@@ -59,8 +59,9 @@ if remain < 30:
     email["To"] = ", ".join(receiver_emails)
     
     # 明确打印 MAIL 和 PWD 的值
-    print(sender_email)
-    
+    print(f"DEBUG: MAIL={os.environ.get('MAIL')}")
+    print(f"DEBUG: PWD={os.environ.get('PWD')}")
+
     # Send the email using SSL
     smtp_server = "smtp.exmail.qq.com"
     smtp_port = 465  # 使用 SSL 连接的常见端口号
