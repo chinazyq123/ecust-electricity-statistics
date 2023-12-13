@@ -19,6 +19,8 @@ jobs:
       - name: Run
         env:
             URL: ${{secrets.URL}}
+            MAIL: ${{ secrets.MAIL }}
+            PWD: ${{ secrets.PWD }}
         run: |
           python main.py
       - name: git config
