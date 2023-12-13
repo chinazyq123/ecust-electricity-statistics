@@ -58,8 +58,8 @@ if remain < 30:
     email["From"] = sender_email
     email["To"] = ", ".join(receiver_emails)
     
-    # Print MAIL and PWD values for debugging
-    print(f"DEBUG: MAIL={sender_email}")
+    # 明确打印 MAIL 和 PWD 的值
+    print(f"DEBUG: MAIL={os.environ.get('MAIL')}")
     print(f"DEBUG: PWD={os.environ.get('PWD')}")
     
     # Send the email using SSL
