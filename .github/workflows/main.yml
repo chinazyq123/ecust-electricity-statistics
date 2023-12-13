@@ -16,15 +16,11 @@ jobs:
       - name: Install
         run:
           pip install -r requirements.txt
-      - name: Debug
-        run: |
-          echo "MAIL=${{ secrets.MAIL }}"
-          echo "PWD=${{ secrets.PWD }}"
       - name: Run
         env:
             URL: ${{secrets.URL}}
-            MAIL: ${{ secrets.MAIL }}
-            PWD: ${{ secrets.PWD }}
+            MAIL: ${{secrets.MAIL}}
+            PWD: ${{secrets.PWD}}
         run: |
           python main.py
       - name: git config
