@@ -46,7 +46,7 @@ originstring = json.dumps(data, indent=4, ensure_ascii=False)
 Path("data.js").write_text("data=" + originstring)
 
 # Send email if remaining electricity is below 5
-if remain < 20:
+if remain < 30:
     sender_email = os.environ.get('MAIL').strip()
     receiver_emails = ["bestzyq@foxmail.com", "1162358837@qq.com", "2776820836@qq.com", "1305955806@qq.com"]
     subject = "低电量提醒"
